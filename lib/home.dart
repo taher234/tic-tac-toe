@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tictac/controls/controllerr.dart';
-
-import 'modals/logic_Game.dart';
+import 'package:tictac/views/containerBoard.dart';
 
 class MyHomePage extends StatelessWidget {
   @override
@@ -39,27 +38,8 @@ class MyHomePage extends StatelessWidget {
                   (index) => InkWell(
                     borderRadius: BorderRadius.circular(40),
                     onTap: wat.gameOver ? null : () => rea.onTapIndex(index),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.blueGrey.withOpacity(.4),
-                        borderRadius: BorderRadius.circular(40),
-                      ),
-                      child: Center(
-                        child: Text(
-                          Player.playerX.contains(index)
-                              ? "X"
-                              : Player.playerO.contains(index)
-                                  ? "O"
-                                  : "",
-                          style: TextStyle(
-                            fontSize: 50,
-                            fontWeight: FontWeight.w800,
-                            color: Player.playerX.contains(index)
-                                ? Colors.green
-                                : Colors.pink,
-                          ),
-                        ),
-                      ),
+                    child: containerBoard(
+                      index: index,
                     ),
                   ),
                 ),
