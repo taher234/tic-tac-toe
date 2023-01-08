@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:provider/provider.dart';
 import 'package:tictac/controls/controllerr.dart';
 import 'package:tictac/views/containerBoard.dart';
 
+import 'modals/logic_Game.dart';
+
 class MyHomePage extends StatelessWidget {
+  Game g = Game();
   @override
   Widget build(BuildContext context) {
     final wat = context.watch<contr>();
@@ -37,7 +41,22 @@ class MyHomePage extends StatelessWidget {
                   9,
                   (index) => InkWell(
                     borderRadius: BorderRadius.circular(40),
-                    onTap: wat.gameOver ? null : () => rea.onTapIndex(index),
+                    onTap: wat.gameOver
+                        ? null
+                        : () {
+                            rea.onTapIndex(index);
+                            if (g.checkWinner() != "") {
+                              showToast(
+                                wat.result,
+                                context: context,
+                                animation: StyledToastAnimation.scale,
+                                reverseAnimation: StyledToastAnimation.fade,
+                                position: StyledToastPosition.center,
+                                animDuration: Duration(milliseconds: 500),
+                                duration: Duration(seconds: 4),
+                              );
+                            }
+                          },
                     child: containerBoard(
                       index: index,
                     ),
@@ -52,7 +71,7 @@ class MyHomePage extends StatelessWidget {
             ),
             //result
             Text(
-              wat.result,
+              g.checkWinner() != "" ? wat.result : "",
               style: Theme.of(context).textTheme.headline4,
             ),
             //repeat the game

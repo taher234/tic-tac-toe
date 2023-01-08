@@ -45,6 +45,7 @@ class contr with ChangeNotifier {
   //update Active
   updateActive() {
     activePlayer = activePlayer == "X" ? "O" : "X";
+    turn++;
     if (g.checkWinner() == "") {
       result = "It's drew";
     } else {
