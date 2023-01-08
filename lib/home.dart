@@ -71,7 +71,7 @@ class MyHomePage extends StatelessWidget {
             ),
             //result
             Text(
-              g.checkWinner() != "" ? wat.result : "",
+              wat.result,
               style: Theme.of(context).textTheme.headline4,
             ),
             //repeat the game

@@ -46,10 +46,11 @@ class contr with ChangeNotifier {
   updateActive() {
     activePlayer = activePlayer == "X" ? "O" : "X";
     turn++;
-    if (g.checkWinner() == "") {
-      result = "It's drew";
-    } else {
+    if (g.checkWinner() != "") {
+      gameOver = true;
       result = "It's ${g.checkWinner()} is winner";
+    } else if (turn == 9) {
+      result = "It's drew";
     }
     notifyListeners();
   }
