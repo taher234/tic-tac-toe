@@ -23,7 +23,7 @@ class Game {
     }
   }
 
-  checkWinner() {
+  String checkWinner() {
     String winner = "";
     if (Player.playerX.containsAll(0, 1, 2) ||
         Player.playerX.containsAll(3, 4, 5) ||
@@ -46,6 +46,7 @@ class Game {
     } else {
       winner = "";
     }
+    return winner;
   }
 
   Future autoPlay(String activePlayer) async {

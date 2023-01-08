@@ -6,7 +6,7 @@ class contr with ChangeNotifier {
   String activePlayer = "X"; // to know who player playes now
   bool gameOver = false; //to know game is over or not
   int turn = 0; //number of times (0:9)
-  String result = 'xxxxxxxx';
+  String result = '';
   bool isSwitched = false;
   Game g = Game();
   //change switched on/off
@@ -28,9 +28,28 @@ class contr with ChangeNotifier {
   }
 
   //logic board index
-  onTapIndex(ind) {
-    g.playGame(ind, activePlayer);
+  onTapIndex(ind) async {
+    if ((Player.playerX.isEmpty || !Player.playerX.contains(ind)) &&
+        (Player.playerO.isEmpty || !Player.playerO.contains(ind))) {
+      g.playGame(ind, activePlayer);
+      updateActive();
+      if (isSwitched && !gameOver) {
+        await g.autoPlay(activePlayer);
+        updateActive();
+      }
+    }
+
+    notifyListeners();
+  }
+
+  //update Active
+  updateActive() {
     activePlayer = activePlayer == "X" ? "O" : "X";
+    if (g.checkWinner() == "") {
+      result = "It's drew";
+    } else {
+      result = "It's ${g.checkWinner()} is winner";
+    }
     notifyListeners();
   }
 }
