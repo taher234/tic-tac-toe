@@ -22,7 +22,7 @@ class contr with ChangeNotifier {
     activePlayer = "X";
     gameOver = false;
     turn = 0;
-    result = 'xxxxxxxx';
+    result = '';
     isSwitched = false;
     notifyListeners();
   }

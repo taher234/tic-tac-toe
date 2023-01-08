@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:provider/provider.dart';
 import 'package:tictac/controls/controllerr.dart';
 import 'package:tictac/views/containerBoard.dart';
@@ -41,22 +40,7 @@ class MyHomePage extends StatelessWidget {
                   9,
                   (index) => InkWell(
                     borderRadius: BorderRadius.circular(40),
-                    onTap: wat.gameOver
-                        ? null
-                        : () {
-                            rea.onTapIndex(index);
-                            if (g.checkWinner() != "") {
-                              showToast(
-                                wat.result,
-                                context: context,
-                                animation: StyledToastAnimation.scale,
-                                reverseAnimation: StyledToastAnimation.fade,
-                                position: StyledToastPosition.center,
-                                animDuration: Duration(milliseconds: 500),
-                                duration: Duration(seconds: 4),
-                              );
-                            }
-                          },
+                    onTap: wat.gameOver ? null : () => rea.onTapIndex(index),
                     child: containerBoard(
                       index: index,
                     ),
