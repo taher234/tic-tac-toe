@@ -9,8 +9,12 @@ class Player {
 }
 
 extension ContainsAll on List {
-  bool containsAll(int x, int y, int z) {
-    return contains(x) && contains(y) && contains(z);
+  bool containsAll(int x, int y, [z]) {
+    if (z == null) {
+      return contains(x) && contains(y);
+    } else {
+      return contains(x) && contains(y) && contains(z);
+    }
   }
 }
 
@@ -25,6 +29,7 @@ class Game {
 
   String checkWinner() {
     String winner = "";
+    bool gameOver = false;
     if (Player.playerX.containsAll(0, 1, 2) ||
         Player.playerX.containsAll(3, 4, 5) ||
         Player.playerX.containsAll(6, 7, 8) ||
