@@ -16,5 +16,5 @@ class Game {
   }
 
   checkWinner() {}
-  autoPlay() {}
+  Future autoPlay() async {}
 }
