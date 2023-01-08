@@ -62,7 +62,7 @@ class Game {
       }
     }
     //start-center
-    if (Player.playerX.containsAll(0, 1) && emptyL.contains(2)) {
+    if (Player.playerO.containsAll(0, 1) && emptyL.contains(2)) {
       index = 2;
     } else if (Player.playerO.containsAll(3, 4) && emptyL.contains(5)) {
       index = 5;
@@ -80,7 +80,7 @@ class Game {
       index = 6;
     }
     //center-end
-    if (Player.playerX.containsAll(1, 2) && emptyL.contains(0)) {
+    if (Player.playerO.containsAll(1, 2) && emptyL.contains(0)) {
       index = 1;
     } else if (Player.playerO.containsAll(4, 5) && emptyL.contains(3)) {
       index = 3;
@@ -98,7 +98,7 @@ class Game {
       index = 2;
     }
     //start-end
-    if (Player.playerX.containsAll(0, 2) && emptyL.contains(1)) {
+    if (Player.playerO.containsAll(0, 2) && emptyL.contains(1)) {
       index = 1;
     } else if (Player.playerO.containsAll(3, 5) && emptyL.contains(4)) {
       index = 4;
