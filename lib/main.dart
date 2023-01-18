@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:tictac/controls/controllerr.dart';
 
 import 'home.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitDown,
-    DeviceOrientation.portraitUp,
-  ]);
   runApp(ChangeNotifierProvider<contr>(
     create: (_) => contr(),
     child: const MyApp(),

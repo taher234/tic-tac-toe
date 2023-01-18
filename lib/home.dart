@@ -11,11 +11,10 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final wat = context.watch<contr>();
     final rea = context.read<contr>();
-    bool landScape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
+    bool landScape = MediaQuery.of(context).orientation == Orientation.portrait;
     return Scaffold(
       body: SafeArea(
-        child: !landScape
+        child: landScape
             ? Column(
                 children: [
                   //title
@@ -40,8 +39,15 @@ class MyHomePage extends StatelessWidget {
               )
             : Row(
                 children: [
-                  ...firstBlock(context, wat, rea),
-                  ...lastBlock(context, wat, rea),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ...firstBlock(context, wat, rea),
+                        ...lastBlock(context, wat, rea),
+                      ],
+                    ),
+                  ),
                   _expanded(landScape: landScape, wat: wat, rea: rea),
                 ],
               ),
