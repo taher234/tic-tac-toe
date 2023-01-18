@@ -33,7 +33,7 @@ class contr with ChangeNotifier {
         (Player.playerO.isEmpty || !Player.playerO.contains(ind))) {
       g.playGame(ind, activePlayer);
       updateActive();
-      if (isSwitched && !gameOver) {
+      if (isSwitched && !gameOver && turn != 9) {
         await g.autoPlay(activePlayer);
         updateActive();
       }

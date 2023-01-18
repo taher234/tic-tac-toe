@@ -62,6 +62,7 @@ class Game {
       }
     }
 
+//attacks
     //start-center
     if (Player.playerO.containsAll(0, 1) && emptyL.contains(2)) {
       index = 2;
@@ -116,6 +117,7 @@ class Game {
     } else if (Player.playerO.containsAll(2, 6) && emptyL.contains(4)) {
       index = 4;
     }
+    //defense
     if (Player.playerX.containsAll(0, 1) && emptyL.contains(2)) {
       index = 2;
     } else if (Player.playerX.containsAll(3, 4) && emptyL.contains(5)) {
